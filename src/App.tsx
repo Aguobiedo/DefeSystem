@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { personasDB, Persona } from './PersonaData';
 import './App.css';
 import { BrowserMultiFormatReader } from '@zxing/library';
@@ -10,16 +10,14 @@ function App() {
   const [error, setError] = useState<string>('');
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const [scanner, setScanner] = useState<BrowserMultiFormatReader | null>(null);
-  const [isScanning, setIsScanning] = useState<boolean>(false);
   const [showModal, setShowModal] = useState<boolean>(false);
-  const [lastScannedId, setLastScannedId] = useState<number | null>(null); // para evitar escaneos repetidos
 
   const buscarPersonaPorId = (idBuscado: number) => {
     const personaEncontrada = personasDB.find((p) => p.id === idBuscado);
     if (personaEncontrada) {
       setPersona(personaEncontrada);
       setError('');
-      setShowModal(true); // Mostrar el modal
+      setShowModal(true);
     } else {
       setError('Persona no encontrada');
       setPersona(null);
@@ -28,8 +26,7 @@ function App() {
 
   const handleScan = (result: string) => {
     const idEscaneado = parseInt(result);
-    if (!isNaN(idEscaneado) && idEscaneado !== lastScannedId) {
-      setLastScannedId(idEscaneado); // Evita escaneos repetidos
+    if (!isNaN(idEscaneado)) {
       setId(idEscaneado);
       buscarPersonaPorId(idEscaneado);
     }
@@ -54,21 +51,18 @@ function App() {
             handleError(error);
           }
         })
-        .then(() => setIsScanning(true))
         .catch((err) => handleError(err));
     }
 
     return () => {
       if (scanner) {
         scanner.reset();
-        setIsScanning(false);
       }
     };
   }, [scanner]);
 
   const closeModal = () => {
     setShowModal(false);
-    setLastScannedId(null); // permite volver a escanear el mismo QR
   };
 
   return (
@@ -97,7 +91,6 @@ function App() {
         </div>
       )}
 
-      {/* Modal */}
       {showModal && persona && (
         <div className="modal-overlay">
           <div className="modal-content">
@@ -114,7 +107,7 @@ function App() {
         </div>
       )}
     </div>
-  ); 
+  );
 }
 
 export default App;
