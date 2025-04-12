@@ -1,5 +1,3 @@
-// personasData.ts
-
 export interface Persona {
   id: number;
   nombre: string;
@@ -10,7 +8,7 @@ export interface Persona {
   deporte: string;
 }
 
-// Datos simulados de personas (simula la base de datos)
+// Base de datos simulada de personas
 export const personasDB: Persona[] = [
   { id: 1, nombre: 'Lautaro', apellido: 'Achava', dni: '48.066.602', fechaNacimiento: '2007-04-27', condicion: 'Deportista', deporte: 'Futbol Mayor' },
   { id: 2, nombre: 'Facundo', apellido: 'Altuna', dni: '41.501.603', fechaNacimiento: '1997-11-14', condicion: 'Deportista', deporte: 'Futbol Mayor' },
@@ -52,4 +50,4 @@ export const personasDB: Persona[] = [
   { id: 38, nombre: 'Nicolas', apellido: 'Vazquez', dni: '44.525.566', fechaNacimiento: '2003-01-26', condicion: 'Deportista', deporte: 'Futbol Mayor' },
   { id: 39, nombre: 'Gabriel', apellido: 'Lopez', dni: '49.200.511', fechaNacimiento: '2007-07-24', condicion: 'Deportista', deporte: 'Futbol Mayor' },
   { id: 40, nombre: 'Luciano', apellido: 'Collodi', dni: '41.673.073', fechaNacimiento: '1997-12-12', condicion: 'Deportista', deporte: 'Futbol Mayor' }
-]
+];
