@@ -176,6 +176,7 @@ body {
 @media (max-width: 480px) {
   .input-group input,
   .button-group button {
+    
     font-size: 14px;
     padding: 10px;
   }
