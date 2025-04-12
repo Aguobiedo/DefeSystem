@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { personasDB, Persona } from './PersonaData';
 import './App.css';
 import { BrowserMultiFormatReader } from '@zxing/library';
@@ -6,6 +6,7 @@ import QRCode from 'react-qr-code';
 import { renderToStaticMarkup } from 'react-dom/server';
 import JSZip from 'jszip';
 import { saveAs } from 'file-saver';
+
 
 function App() {
   // Búsqueda por DNI (texto)
